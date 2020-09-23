@@ -3,12 +3,13 @@ import Cookie from 'js-cookie'
 
 // 跨域认证信息 header 名
 const xsrfHeaderName = 'Authorization'
+const API_PROXY_PREFIX='/api'
 
 axios.defaults.timeout = 5000
 axios.defaults.withCredentials= true
 axios.defaults.xsrfHeaderName= xsrfHeaderName
 axios.defaults.xsrfCookieName= xsrfHeaderName
-
+axios.defaults.baseURL=API_PROXY_PREFIX
 // 认证类型
 const AUTH_TYPE = {
   BEARER: 'Bearer',
@@ -120,6 +121,7 @@ function loadInterceptors(interceptors, options) {
   })
   // 加载响应拦截器
   response.forEach(item => {
+    
     let {onFulfilled, onRejected} = item
     if (!onFulfilled || typeof onFulfilled !== 'function') {
       onFulfilled = response => response

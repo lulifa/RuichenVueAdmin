@@ -28,7 +28,7 @@ const options = {
       children: [
         {
           path: 'dashboard',
-          name: 'Dashboard',
+          name: '工作台',
           meta: {
             icon: 'dashboard'
           },
@@ -216,6 +216,26 @@ const options = {
             }
           },
           component: () => import('@/pages/form/basic')
+        },
+        {
+          path: 'crm',
+          name: '商务管理',
+          meta: {
+            icon: 'appstore-o'
+          },
+          component: PageView,
+          children: [
+            {
+              path: 'contract',
+              name: '合同管理',
+              component: () => import('@/pages/crm/contract/List')
+            },
+            {
+              path: 'customer',
+              name: '客户管理',
+              component: () => import('@/pages/crm/customer/List')
+            }
+          ]
         }
       ]
     },

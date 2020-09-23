@@ -1,6 +1,6 @@
 <template>
   <div class="page-layout">
-    <page-header ref="pageHeader" :style="`margin-top: ${multiPage ? 0 : -24}px`" :breadcrumb="breadcrumb" :title="pageTitle" :logo="logo" :avatar="avatar">
+    <page-header ref="pageHeader" :style="`margin-top: ${multiPage ? 0 : -24}px;height:45px;`" :breadcrumb="breadcrumb" :logo="logo" :avatar="avatar">
       <slot name="action"  slot="action"></slot>
       <slot slot="content" name="headerContent"></slot>
       <div slot="content" v-if="!this.$slots.headerContent && desc">
@@ -128,8 +128,6 @@ export default {
   .page-content{
     position: relative;
     padding: 24px 0 0;
-    &.side{
-    }
     &.head.fixed{
       margin: 0 auto;
       max-width: 1400px;

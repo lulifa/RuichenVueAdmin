@@ -12,7 +12,7 @@ const resp401 = {
     if (response.status === 401) {
       message.error('无此接口权限')
     }
-    return response
+    return response.data
   },
   /**
    * 响应出错时执行
