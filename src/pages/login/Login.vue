@@ -75,7 +75,7 @@
 
 <script>
 import CommonLayout from '@/layouts/CommonLayout'
-import {login, getRoutesConfig} from '@/services/user'
+import {login, getRoutesConfig} from '@/services/auth/login'
 import {setAuthorization} from '@/utils/request'
 import {loadRoutes} from '@/utils/routerUtil'
 import {mapMutations} from 'vuex'
@@ -102,9 +102,11 @@ export default {
       this.form.validateFields((err) => {
         if (!err) {
           this.logging = true
-          const name = this.form.getFieldValue('name')
-          const password = this.form.getFieldValue('password')
-          login(name, password).then(this.afterLogin)
+          const parameters={
+            name:this.form.getFieldValue('name'),
+            password:this.form.getFieldValue('password')
+          }
+          login(parameters).then(this.afterLogin)
         }
       })
     },
@@ -119,13 +121,13 @@ export default {
         setAuthorization({token: loginRes.data.token, expireAt: new Date(loginRes.data.expireAt)})
         // 获取路由配置
         getRoutesConfig().then(result => {
-          const routesConfig = result.data.data
+          const routesConfig = result.data
           loadRoutes({router: this.$router, store: this.$store, i18n: this.$i18n}, routesConfig)
-          this.$router.push('/dashboard/workplace')
-          this.$message.success(loginRes.message, 3)
+          this.$router.push('/crm/contract')
+          this.$message.success('登陆成功，欢迎回来', 3)
         })
       } else {
-        this.error = loginRes.message
+        this.error = loginRes.msg
       }
     }
   }
