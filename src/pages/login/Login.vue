@@ -5,7 +5,7 @@
                 <img alt="logo" class="logo" src="@/assets/img/logo.png" />
                 <span class="title">{{ systemName }}</span>
             </div>
-            <div class="desc">Ant Design 是西湖区最具影响力的 Web 设计规范</div>
+            <div class="desc">卢立法个人网站-前后端分离项目</div>
         </div>
         <div class="login">
             <a-form @submit="onSubmit" :form="form">
