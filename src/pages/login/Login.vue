@@ -182,7 +182,7 @@ export default {
                         },
                         routesConfig
                     );
-                    this.$router.push('/crm/contract');
+                    this.$router.push('/dashboard/workplace');
                     this.$message.success('登陆成功，欢迎回来', 3);
                 });
             } else {

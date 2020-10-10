@@ -11,7 +11,7 @@ export async function login(parameter) {
 }
 
 export async function getRoutesConfig() {
-  return request(`${process.env.VUE_APP_API_BASE_URL}/routes`, METHOD.GET)
+  return request('Menu/GetRoutesConfig', METHOD.GET)
 }
 
 /**
